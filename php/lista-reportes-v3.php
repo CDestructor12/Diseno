@@ -44,10 +44,9 @@ class PDFReporte extends FPDF{
     }
 }
 // Defino parametros para nombres y matriculas.
-$nombres=array('Juan Manuel','Joseph','Michael','Jeferson','Joe','Carlos','Samuel','Stiben');
-$apellidos=array('Vargas','Tiburcio','Garcia','Gomez','Gonzalez','Perez','Lopez','Rodriguez');
-$matriculas=array('0000','6504','8461','5486','1105','1005','6548','1148');
-
+$mysqli=new mysqli("localhost","report","reporte01","bd_estudiantes");
+$consulta="SELECT * FROM estudiantes";
+$resultado=$mysqli->query($consulta);
 
 // Empezar a trabajar con el reporte
 $pdf = new PDFReporte();
@@ -57,10 +56,10 @@ $pdf -> AddPage();
 $pdf -> SetFillColor(255, 255, 255);
 $pdf -> SetDrawColor(255, 179, 0);
 
-$pdf -> cell(35,7,'Matricula: ',0,0,'C',True);
-$pdf -> cell(60,7,'Nombre: ',0,0,'C',TRUE);
-$pdf -> cell(60,7,'Apellido: ',0,0,'C',TRUE);
-$pdf -> cell(20,7,'Sexo: ',0,0,'C',TRUE);
+$pdf -> cell(35,7,'Matricula',0,0,'C',True);
+$pdf -> cell(60,7,'Nombre',0,0,'C',TRUE);
+$pdf -> cell(60,7,'Apellido',0,0,'C',TRUE);
+$pdf -> cell(20,7,utf8_decode('Calificación'),0,0,'C',TRUE);
 
 //Asignar borde  a la linea
 $pdf->SetLineWidth(1);
@@ -71,12 +70,14 @@ $pdf -> SetFont('Arial','',12);
 $pdf -> SetLineWidth(0);
 $pdf -> SetFillColor(230, 230, 230);
 $pdf -> SetDrawColor(255, 255, 255);
-for($a=0;$a<=7;$a++){
-    $pdf -> cell(35,10,'2018-'.$matriculas[$a],1,0,'C',True);
-    $pdf -> cell(60,10,$nombres[$a],1,0,'C',TRUE);
-    $pdf -> cell(60,10,$apellidos[$a],1,0,'C',TRUE);
-    $pdf -> cell(20,10,'M',1,0,'C',TRUE);
-    $pdf -> Ln();
+
+while($row=$resultado->fetch_assoc()){
+    $pdf->cell(41,10,$row['matricula'],1,0,'C',True);
+    $pdf->cell(60,10,$row['nombres'],1,0,'C',TRUE);
+    $pdf->cell(60,10,$row['apellidos'],1,0,'C',TRUE);
+    $pdf->cell(20,10,$row['calif'],1,0,'C',TRUE);
+    $pdf->Ln();
 }
+
 $pdf -> Output();
 ?>

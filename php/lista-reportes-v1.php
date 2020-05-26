@@ -1,10 +1,10 @@
 <?php
-require('./reporte/fpdf.php');
+require('/xampp/htdocs/diseno/reporte/fpdf.php');
 
 class PDFReporte extends FPDF{
     function Header()
     {
-        $this -> Image('./img/ucateci.png', 10, 8 ,80);
+        $this -> Image('../img/ucateci.png', 10, 8 ,80);
         $this -> SetFont('Arial', 'B', 16);
         
         $this -> Cell(80);
