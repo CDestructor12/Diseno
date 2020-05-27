@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Reporte</title>
+    <link rel="icon" href="./img/ucateci-circulo.png">
+    <link rel="stylesheet" href="./css/stilos-principal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+      <a class="active" href="./index.html">Home</a>  
+      <a class="codigo1" href="./php/lista-reportes-v1.php">Codigo Version 1.0</a>
+      <a class="codigo2" href="./php/lista-reportes-v2.php">Codigo Version 2.0</a>
+      <a class="codigo3" href="./php/lista-reportes-v3.php">Codigo Version 3.0</a>
+      <a class="codigo4" href="./php/introducir-datos.php">Introducir datos</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+    <h1>Ejemplo sencillo de reportes con fpdf</h1>
+    <ul>
+        <a class="pdf1" href="./pdf/lista-personas-v1.pdf" target="_blank">PDF Version 1.0</a>
+        <a class="pdf1" href="./pdf/lista-personas-v2.pdf" target="_blank">PDF Version 2.0</a>
+        <a class="pdf1" href="./pdf/lista-personas-v3.pdf" target="_blank">PDF Version 3.0</a>
+    </ul>
+    <br>
+    <p>Heho por Juan Canahuate</p>
+    <!--
+      
+      No queria joder mucho con el html
+      
+      Ten cuidado porque te puede quemar los ojos.
+
+      Lo que no entiendo es porque estan viendo el html, no se para que necesiten el codigo de un boton
+      o siquiera texto. Pero bueno, Suerte!.
+      
+      Bacanito asarozo, vayase de aqui.
+      Mamerto aqueroso.
+      St klk.
+      IOC MAMESELO.
+    -->
+    <script>
+      /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        }
+        else {
+          x.className = "topnav";
+        }
+    }
+  </script>
+</body>
+</html>
